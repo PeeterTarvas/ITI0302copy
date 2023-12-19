@@ -1,0 +1,49 @@
+image: gradle:jdk11
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+build stocks:
+  stage: build
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  artifacts:
+    paths:
+      - build/libs
+  tags:
+    - stocks
+  script:
+    -  chmod +x gradlew
+    - ./gradlew wrapper
+    - ./gradlew assemble
+    - docker build -t bootdocker:staging .
+
+
+test stocks:
+  stage: test
+  tags:
+    - stocks
+  script:
+    - ./gradlew check
+
+deploy stocks:
+  stage: deploy
+  only:
+    refs:
+      - main # only branch to be deployed
+      - 73-tests
+  tags:
+    - stocks
+  script:
+    - chmod +x scripts/clearDocker.sh
+    - ./scripts/clearDocker.sh
+    - docker-compose up -d
+
+

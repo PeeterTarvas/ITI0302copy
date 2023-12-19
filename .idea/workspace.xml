@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="274523ed-15d5-48d1-8010-eff6367f551b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -8,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/back-end" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -47,7 +50,7 @@
       <updated>1703016671505</updated>
       <workItem from="1703016672486" duration="83000" />
       <workItem from="1703016756581" duration="108000" />
-      <workItem from="1703016882417" duration="305000" />
+      <workItem from="1703016882417" duration="467000" />
     </task>
     <servers />
   </component>
