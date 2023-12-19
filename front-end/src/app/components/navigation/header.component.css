@@ -1,0 +1,31 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover, a:active{
+}
+
+li:hover, li:active {
+  transition: 0.4s ease-in-out;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 50px 50px;
+  cursor: pointer;
+}
+
+.navigation-items{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+mat-toolbar {
+  border-radius: 3px;
+  box-shadow: 5px 5px #80CBC4, 10px 10px #B2DFDB, 15px 15px #E0F2F1;
+
+}
+@media(max-width: 959px){
+  mat-toolbar{
+    border-radius: 0;
+    min-height: 7em;
+  }
+}

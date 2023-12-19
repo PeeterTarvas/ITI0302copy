@@ -1,0 +1,36 @@
+
+stages:
+  - build
+  - deploy
+
+build frontend:
+  stage: build
+  image: node:14.18-alpine
+  cache:
+    paths:
+      - node_modules
+  artifacts:
+    paths:
+      - dist
+  tags:
+    - frontend-runner
+  script:
+    - chmod +x scripts/clearDocker.sh
+    - ./scripts/clearDocker.sh
+    - npm install
+    - npm run build
+    - docker build -t front:latest .
+
+
+deploy frontend:
+  stage: deploy
+  only:
+    refs:
+      - 64-morale-booster-user-access
+      - main # only branch to be deployed
+      - 65-error-message-text
+  tags:
+    - frontend-runner
+  script:
+    - docker-compose up -d
+

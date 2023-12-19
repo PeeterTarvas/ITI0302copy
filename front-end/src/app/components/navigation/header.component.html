@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" fxLayoutGap="1rem">
+  <div>
+    <a routerLink="/app-layout">Home page</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="center center">
+    <ul fxFlex fxLayout fxLayout.xs="column" fxLayoutGap.xs ="5" fxLayoutAlign="center" fxLayoutGap="3rem" class="navigation-items">
+      <li *ngIf="authenticationService.getCurrentUserValue">
+        <a routerLink="/morale">Boost my morale</a>
+      </li>
+      <li>
+        <a routerLink="/stock">View stock</a>
+      </li>
+      <li>
+        <a routerLink="/compare-stock">Compare stock</a>
+      </li>
+      <li>
+        <a routerLink="/about-us">About us</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!authenticationService.getCurrentUserValue" fxFlex="40px" fxLayout fxLayoutAlign="end">
+    <a routerLink="/login">Log In</a>
+  </div>
+  <div *ngIf="authenticationService.getCurrentUserValue" fxFlex="40px" fxLayout fxLayoutAlign="end">
+    <a routerLink="/profile">Profile</a>
+  </div>
+</mat-toolbar>

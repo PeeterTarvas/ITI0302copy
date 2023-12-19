@@ -1,0 +1,50 @@
+<div class="compare-stock-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="50px">
+  <h2  fxLayout="row" fxLayoutAlign="center center">Here you can compare 2 stocks and get their information.</h2>
+
+  <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.xs="column">
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Enter a stock symbol</mat-label>
+      <input matInput #symbol/>
+    </mat-form-field>
+    <button mat-button (click)="getData(symbol.value)">Search</button>
+
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Enter a stock symbol</mat-label>
+      <input matInput #text/>
+    </mat-form-field>
+    <button mat-button (click)="getStockData(text.value)">Search</button>
+  </div>
+
+  <span fxLayout="row" fxLayoutAlign="start center" class="error-message" *ngIf="hasSubmitted && throwError">Stock was not found!</span>
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted && !throwError"
+                                 [symbol]="stockGUIService.symbol"
+                                 [open]="stockGUIService.open"
+                                 [high]="stockGUIService.high"
+                                 [close]="stockGUIService.close"
+                                 [volume]="stockGUIService.volume"
+                                 [lastDate]="stockGUIService.lastDate"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels">
+  </app-stock-graphical-interface>
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted2 && !throwError2"
+                                 [symbol]="stockGUIService.symbol2"
+                                 [open]="stockGUIService.open2"
+                                 [high]="stockGUIService.high2"
+                                 [close]="stockGUIService.close2"
+                                 [volume]="stockGUIService.volume2"
+                                 [lastDate]="stockGUIService.lastDate2"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo2"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo2"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData2"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels2">
+  </app-stock-graphical-interface>
+
+  <span fxLayout="row" fxLayoutAlign="center center" class="error-message2" *ngIf="hasSubmitted2 && throwError2">Stock was not found!</span>
+
+</div>

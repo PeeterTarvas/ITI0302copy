@@ -1,0 +1,18 @@
+{
+  "/api/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug"
+  },
+
+  "/users/*": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/users/login": {
+    "target": "http://localhost:8080/users/login",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

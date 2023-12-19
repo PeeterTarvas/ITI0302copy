@@ -1,0 +1,57 @@
+version: '3.3'
+services:
+
+  front:
+    container_name: "front"
+    image: front:latest
+    depends_on:
+      - API
+    ports:
+     - "80:80"
+     - "443:443"
+    networks:
+      - net
+    volumes:
+      -  /etc/letsencrypt:/etc/letsencrypt
+
+  API:
+    image: bootdocker:staging
+    container_name: "back"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_PROFILES_ACTIVE=local
+      - AWS_REGION=local
+      - ENVIRONMENT=local
+    networks:
+      - net
+
+  db:
+    image: postgres:latest
+    container_name: "postgres"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_ROOT_PASSWORD=postgres
+
+    user: postgres
+    ports:
+      - "5632:5432"
+    healthcheck:
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+
+
