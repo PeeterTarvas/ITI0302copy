@@ -1,10 +1,3 @@
-# Web application from team_02 - back end
-
-## Team members
-- Peeter Tarvas
-- Annemari Riisimäe
-- Kaisa-Mari Veinberg
-- Markus Talvik
 
 ## How to run locally
 - Make sure you have Java 11 or newer, Gradle, Docker and PostgreSQL
@@ -25,6 +18,3 @@
 ## How to run tests
 - Select test module and run tests with coverage
 - Because we are using an external API and database has to be initialised, running test takes time (approximately 5 minutes to run all tests)
-
-## Connect to server
-- run: `ssh ubuntu@13.48.85.253`
