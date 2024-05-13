@@ -1,14 +1,4 @@
-# Web application from team_02 - front end
-
-## Team members
-
-  - Peeter Tarvas
-
-  - Annemari Riisimäe
-
-  - Kaisa-Mari Veinberg
-
-  - Markus Talvik
+# Web application
 
 ## How to run locally
 
